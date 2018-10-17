@@ -46,7 +46,7 @@ public class FragmentMaster extends Fragment {
 
         //Control what happens when color is clicked
         //Get Picked Color -> String
-        //Send that to parent/interface 
+        //Send that to parent/interface
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parentView, View view, int position, long id) {

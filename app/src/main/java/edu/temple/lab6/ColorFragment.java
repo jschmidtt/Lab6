@@ -58,9 +58,13 @@ public class ColorFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_color, container, false);
 
-        v.setBackgroundColor(Color.parseColor(color));
+        changeColor(color);
 
         return v;
+    }
+
+    public void changeColor(String color){
+        v.setBackgroundColor(Color.parseColor(color));
     }
 
 }
