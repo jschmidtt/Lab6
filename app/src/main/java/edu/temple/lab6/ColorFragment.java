@@ -45,6 +45,7 @@ public class ColorFragment extends Fragment {
     public static ColorFragment newInstance(String color){
         //Create instances of the Fragment
         ColorFragment colorFragment = new ColorFragment();
+
         //Passing Arguments && Creating Bundle
         Bundle bundle = new Bundle();
         bundle.putString(ColorFragment.COLOR_KEY, color);
@@ -63,6 +64,7 @@ public class ColorFragment extends Fragment {
         return v;
     }
 
+    //set the background color to the passed color
     public void changeColor(String color){
         v.setBackgroundColor(Color.parseColor(color));
     }
