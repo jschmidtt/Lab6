@@ -1,4 +1,4 @@
-package edu.temple.lab5;
+package edu.temple.lab6;
 
 
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import edu.temple.lab5.R;
 
 
 /**
@@ -35,10 +37,6 @@ public class ColorFragment extends Fragment {
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Get resources with context
-        //String[] values = context.getResources().getStringArray();
-        //Get Bundle
         Bundle bundle = getArguments();
         //Set to this color
         this.color = bundle.getString(COLOR_KEY);

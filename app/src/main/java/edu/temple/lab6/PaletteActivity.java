@@ -1,21 +1,18 @@
-package edu.temple.lab5;
+package edu.temple.lab6;
 
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-public class PaletteActivity extends AppCompatActivity {
+import edu.temple.lab5.R;
+
+public class PaletteActivity extends AppCompatActivity implements FragmentMaster.GetColorInterface {
 
     Spinner spinner;
     FragmentManager fm = getSupportFragmentManager();
+    ColorAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +26,19 @@ public class PaletteActivity extends AppCompatActivity {
         final String myColors[] = res.getStringArray(R.array.colors_array); //For colorParse (aka cant parse blanco -> white)
         //Log.e(LOG_TAG,myColors[0]);
 
+        adapter = new ColorAdapter(this, myColors, myColorsDisplay);
+
         fm.beginTransaction()
                 .replace(R.id.container_1, new FragmentMaster())
+                .commit();
+    }
+
+    @Override
+    public void colorSelected(String colorName) {
+        ColorFragment newColorFragment = ColorFragment.newInstance(colorName);
+        fm.beginTransaction()
+                .replace(R.id.container_1, newColorFragment)
+                .addToBackStack(null)
                 .commit();
     }
 }

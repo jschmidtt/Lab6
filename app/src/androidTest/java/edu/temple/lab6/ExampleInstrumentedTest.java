@@ -1,4 +1,4 @@
-package edu.temple.lab5;
+package edu.temple.lab6;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

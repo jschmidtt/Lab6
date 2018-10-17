@@ -1,4 +1,4 @@
-package edu.temple.lab5;
+package edu.temple.lab6;
 
 
 import android.content.Context;
@@ -8,8 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import edu.temple.lab5.R;
 
 
 /**
@@ -28,7 +29,7 @@ public class FragmentMaster extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (! (context instanceof getColorInterface)){}
+        if (! (context instanceof GetColorInterface)){}
         this.parent = context;
     }
 
@@ -39,22 +40,27 @@ public class FragmentMaster extends Fragment {
         View v = inflater.inflate(R.layout.fragment_master, container, false);
         listView = v.findViewById(R.id.listView);
 
-        listView.setAdapter(new ArrayAdapter<>(parent, android.R.layout.simple_list_item_1,
+        //Sets the list view using the ColorAdapter and the parents resource strings
+        listView.setAdapter(new ColorAdapter(parent, parent.getResources().getStringArray(R.array.colors_array),
                 parent.getResources().getStringArray(R.array.colors_array_display)));
 
+        //Control what happens when color is clicked
+        //Get Picked Color -> String
+        //Send that to parent/interface 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parentView, View view, int position, long id) {
-                String planetName = (String) parentView.getItemAtPosition(position);
-                ((getColorInterface) parent).planetSelected(planetName);
+                String colorName = (String) parentView.getItemAtPosition(position);
+                ((GetColorInterface) parent).colorSelected(colorName);
             }
         });
 
         return v;
     }
 
-    interface getColorInterface {
-        void planetSelected(String planetName);
+    //Color Interface for Palette Activity to control what happens when a color is pressed.
+    interface GetColorInterface {
+        void colorSelected(String colorName);
     }
 
 }

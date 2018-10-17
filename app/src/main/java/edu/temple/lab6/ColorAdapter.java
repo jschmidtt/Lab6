@@ -1,4 +1,4 @@
-package edu.temple.lab5;
+package edu.temple.lab6;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -38,6 +38,7 @@ public class ColorAdapter extends BaseAdapter {
         TextView textView = new TextView(context);
 
         textView.setText(myColorDataDisplay[position]);
+        textView.setTextSize(25);
         textView.setBackgroundColor(Color.parseColor(myColorData[position]));
 
         return textView;
