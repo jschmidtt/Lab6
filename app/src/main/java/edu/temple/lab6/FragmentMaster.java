@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import edu.temple.lab5.R;
-
 
 /**
  * A simple {@link Fragment} subclass.
